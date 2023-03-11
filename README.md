@@ -80,6 +80,11 @@ Also remember to update the short_name and name fields in the `public/manifest.j
 }
 ```
 
+if windows pc you should run.
+```sh
+set NODE_OPTIONS=--openssl-legacy-provider
+```
+
 After all the changes you can run.
 
 ```sh
