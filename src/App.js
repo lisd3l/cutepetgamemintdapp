@@ -120,7 +120,17 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
-  const claimNFTs = () => {
+  const getQueryVariable= (variable) => {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return "";
+  }
+
+  const claimNFTs = (value) => {
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
@@ -129,9 +139,35 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
-    blockchain.smartContract.methods
-      .mint(mintAmount)
-      .send({
+    const referralAddress = getQueryVariable("referral");
+    var method;
+    if (value == 1 && referralAddress) { // Mouse
+      method = blockchain.smartContract.methods
+      // .mintMouse(mintAmount) TODO
+      .mintMouseWithSuperior(referralAddress);
+    } else if (value == 1) { // Mouse
+      method = blockchain.smartContract.methods
+      //.mintCat(mintAmount) TODO
+      .mintMouse();
+    } else if (value == 2 && referralAddress) { // Cat
+      method = blockchain.smartContract.methods
+      //.mintCat(mintAmount) TODO
+      .mintCatWithSuperior(referralAddress);
+    }  else if (value == 2) { // Cat
+      method = blockchain.smartContract.methods
+      //.mintCat(mintAmount) TODO
+      .mintCat();
+    } else if (value == 3 && referralAddress) { // Dog
+      blockchain.smartContract.methods
+      //.mintDog(mintAmount) TODO
+      .mintDogWithSuperior(referralAddress);
+    } else if (value == 3) { // Dog
+      blockchain.smartContract.methods
+      //.mintDog(mintAmount) TODO
+      .mintDog();
+    }
+    if (method) {
+      method.send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
@@ -150,6 +186,7 @@ function App() {
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
       });
+    }
   };
 
   const decrementMintAmount = () => {
@@ -319,6 +356,20 @@ function App() {
                       {feedback}
                     </s.TextDescription>
                     <s.SpacerMedium />
+                    {getQueryVariable("referral")!="" ? (
+                      <>
+                        <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                          <s.TextDescription
+                            style={{
+                              textAlign: "center",
+                              color: "var(--accent-text)",
+                            }}
+                          >
+                          Referral address (optional) <br></br>{getQueryVariable("referral")}
+                          </s.TextDescription>
+                        </s.Container>
+                        <s.SpacerSmall />
+                      </>):null}
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledRoundButton
                         style={{ lineHeight: 0.4 }}
@@ -356,11 +407,31 @@ function App() {
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          claimNFTs();
+                          claimNFTs(1);
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft ? "BUSY" : "MOUSE"}
+                      </StyledButton>
+                      <StyledButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          claimNFTs(2);
+                          getData();
+                        }}
+                      >
+                        {claimingNft ? "BUSY" : "CAT"}
+                      </StyledButton>
+                      <StyledButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          claimNFTs(3);
+                          getData();
+                        }}
+                      >
+                        {claimingNft ? "BUSY" : "DOG"}
                       </StyledButton>
                     </s.Container>
                   </>
