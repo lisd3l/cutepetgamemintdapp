@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0x07Bd16eD4b9A92a284B12Fe49FE17F0fFdF93e10",
-  "SCAN_LINK": "https://goerli.etherscan.io/token/0x07bd16ed4b9a92a284b12fe49fe17f0ffdf93e10",
+  "CONTRACT_ADDRESS": "0xe50f705b7571b70aeaccaccd338c74ecdf083b93",
+  "SCAN_LINK": "https://testnet.bscscan.com/token/0xe50f705b7571b70aeaccaccd338c74ecdf083b93",
   "NETWORK": {
-    "NAME": "Goerli",
-    "SYMBOL": "GoerliETH",
-    "ID": 5
+    "NAME": "BNBTEST",
+    "SYMBOL": "tBNB",
+    "ID": 97
   },
   "NFT_NAME": "Animal",
   "SYMBOL": "ANM",
-  "MAX_SUPPLY": 3000,
-  "WEI_COST": 100000000000000000,
-  "DISPLAY_COST": 0.1,
+  "MAX_SUPPLY": 10000,
+  "WEI_COST": 100000000000000,
+  "DISPLAY_COST": 0.0001,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/animal-6",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/animal-7",
   "SHOW_BACKGROUND": true
 }
