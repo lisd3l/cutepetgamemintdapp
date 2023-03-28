@@ -6,7 +6,7 @@
     "SYMBOL": "GoerliETH",
     "ID": 5
   },
-  "NFT_NAME": "Animal",
+  "NFT_NAME": "ConPet",
   "SYMBOL": "ANM",
   "MAX_SUPPLY": 10000,
   "WEI_COST": 100000000000000,

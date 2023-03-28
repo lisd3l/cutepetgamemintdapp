@@ -158,11 +158,11 @@ function App() {
       //.mintCat(mintAmount) TODO
       .mintCat();
     } else if (value == 3 && referralAddress) { // Dog
-      blockchain.smartContract.methods
+      method = blockchain.smartContract.methods
       //.mintDog(mintAmount) TODO
       .mintDogWithSuperior(referralAddress);
     } else if (value == 3) { // Dog
-      blockchain.smartContract.methods
+      method = blockchain.smartContract.methods
       //.mintDog(mintAmount) TODO
       .mintDog();
     }
@@ -370,7 +370,7 @@ function App() {
                         </s.Container>
                         <s.SpacerSmall />
                       </>):null}
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                    {/* <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledRoundButton
                         style={{ lineHeight: 0.4 }}
                         disabled={claimingNft ? 1 : 0}
@@ -401,7 +401,7 @@ function App() {
                         +
                       </StyledRoundButton>
                     </s.Container>
-                    <s.SpacerSmall />
+                    <s.SpacerSmall /> */}
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
