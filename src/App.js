@@ -8,6 +8,16 @@ import styled from "styled-components";
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
+export const CopyButton = styled.button`
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+  padding: 8px 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+`;
+
 export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
@@ -144,7 +154,7 @@ function App() {
     if (value == 1 && referralAddress) { // Mouse
       method = blockchain.smartContract.methods
       // .mintMouse(mintAmount) TODO
-      .mintMouseWithSuperior(referralAddress);
+      .mintMouseWithSuperior(referralAddress.toLowerCase());
     } else if (value == 1) { // Mouse
       method = blockchain.smartContract.methods
       //.mintCat(mintAmount) TODO
@@ -152,7 +162,7 @@ function App() {
     } else if (value == 2 && referralAddress) { // Cat
       method = blockchain.smartContract.methods
       //.mintCat(mintAmount) TODO
-      .mintCatWithSuperior(referralAddress);
+      .mintCatWithSuperior(referralAddress.toLowerCase());
     }  else if (value == 2) { // Cat
       method = blockchain.smartContract.methods
       //.mintCat(mintAmount) TODO
@@ -160,7 +170,7 @@ function App() {
     } else if (value == 3 && referralAddress) { // Dog
       method = blockchain.smartContract.methods
       //.mintDog(mintAmount) TODO
-      .mintDogWithSuperior(referralAddress);
+      .mintDogWithSuperior(referralAddress.toLowerCase());
     } else if (value == 3) { // Dog
       method = blockchain.smartContract.methods
       //.mintDog(mintAmount) TODO
@@ -433,6 +443,18 @@ function App() {
                       >
                         {claimingNft ? "BUSY" : "DOG"}
                       </StyledButton>
+                    </s.Container>
+                    <s.SpacerSmall />
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                      <CopyButton
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigator.clipboard.writeText(blockchain.account);
+                            alert('Copied to clipboard!');
+                          }}
+                        >
+                        share link
+                      </CopyButton>
                     </s.Container>
                   </>
                 )}
