@@ -449,7 +449,7 @@ function App() {
                       <CopyButton
                           onClick={(e) => {
                             e.preventDefault();
-                            navigator.clipboard.writeText("https://mint.conpet.xyz?referral=" + blockchain.account);
+                            navigator.clipboard.writeText("https://www.conpet.xyz/mint?referral=" + blockchain.account);
                             alert('Copied to clipboard!');
                           }}
                         >
