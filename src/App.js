@@ -149,32 +149,17 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
-    const referralAddress = getQueryVariable("referral");
+    // const referralAddress = getQueryVariable("referral");
     var method;
-    if (value == 1 && referralAddress) { // Mouse
+    if (value == 1) { // Mouse
       method = blockchain.smartContract.methods
-      // .mintMouse(mintAmount) TODO
-      .mintMouseWithSuperior(referralAddress.toLowerCase());
-    } else if (value == 1) { // Mouse
+      .mintMouse(mintAmount);
+    } else if (value == 2) { // Cat
       method = blockchain.smartContract.methods
-      //.mintCat(mintAmount) TODO
-      .mintMouse();
-    } else if (value == 2 && referralAddress) { // Cat
-      method = blockchain.smartContract.methods
-      //.mintCat(mintAmount) TODO
-      .mintCatWithSuperior(referralAddress.toLowerCase());
-    }  else if (value == 2) { // Cat
-      method = blockchain.smartContract.methods
-      //.mintCat(mintAmount) TODO
-      .mintCat();
-    } else if (value == 3 && referralAddress) { // Dog
-      method = blockchain.smartContract.methods
-      //.mintDog(mintAmount) TODO
-      .mintDogWithSuperior(referralAddress.toLowerCase());
+      .mintCat(mintAmount);
     } else if (value == 3) { // Dog
       method = blockchain.smartContract.methods
-      //.mintDog(mintAmount) TODO
-      .mintDog();
+      .mintDog(mintAmount);
     }
     if (method) {
       method.send({
@@ -366,7 +351,7 @@ function App() {
                       {feedback}
                     </s.TextDescription>
                     <s.SpacerMedium />
-                    {getQueryVariable("referral")!="" ? (
+                    {/* {getQueryVariable("referral")!="" ? (
                       <>
                         <s.Container ai={"center"} jc={"center"} fd={"row"}>
                           <s.TextDescription
@@ -379,8 +364,8 @@ function App() {
                           </s.TextDescription>
                         </s.Container>
                         <s.SpacerSmall />
-                      </>):null}
-                    {/* <s.Container ai={"center"} jc={"center"} fd={"row"}>
+                      </>):null} */}
+                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledRoundButton
                         style={{ lineHeight: 0.4 }}
                         disabled={claimingNft ? 1 : 0}
@@ -411,7 +396,7 @@ function App() {
                         +
                       </StyledRoundButton>
                     </s.Container>
-                    <s.SpacerSmall /> */}
+                    <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
@@ -444,7 +429,7 @@ function App() {
                         {claimingNft ? "BUSY" : "DOG"}
                       </StyledButton>
                     </s.Container>
-                    <s.SpacerSmall />
+                    {/* <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <CopyButton
                           onClick={(e) => {
@@ -455,7 +440,7 @@ function App() {
                         >
                         share link
                       </CopyButton>
-                    </s.Container>
+                    </s.Container> */}
                   </>
                 )}
               </>

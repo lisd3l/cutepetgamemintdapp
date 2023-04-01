@@ -2,13 +2,13 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_hierarchy",
+        "internalType": "address payable",
+        "name": "_fundContract",
         "type": "address"
       },
       {
-        "internalType": "address payable",
-        "name": "_fundContract",
+        "internalType": "address",
+        "name": "_dataProxy",
         "type": "address"
       }
     ],
@@ -63,6 +63,31 @@
       }
     ],
     "name": "ApprovalForAll",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_fromStatic",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_static",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "FormChange",
     "type": "event"
   },
   {
@@ -197,6 +222,19 @@
   },
   {
     "inputs": [],
+    "name": "MAX_SUPPLY",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "MINTER_ROLE",
     "outputs": [
       {
@@ -206,6 +244,42 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_static",
+        "type": "uint256"
+      }
+    ],
+    "name": "StatementChange",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "_tokenIdList",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_staticList",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "StatementChangeByList",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -253,7 +327,7 @@
         "type": "uint256"
       }
     ],
-    "name": "changeCat",
+    "name": "burn",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -262,49 +336,32 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "tokenId",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "changeDog",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "changeMouse",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "checkAmountOfAP",
+    "name": "burnedList",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "mouse",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "cat",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "dog",
+        "name": "",
         "type": "uint256"
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_static",
+        "type": "uint256"
+      }
+    ],
+    "name": "createNFT",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -321,6 +378,19 @@
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getBurnedListLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -412,7 +482,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
     "name": "mintCat",
     "outputs": [],
     "stateMutability": "payable",
@@ -421,18 +497,11 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_superior",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
-    "name": "mintCatWithSuperior",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "mintDog",
     "outputs": [],
     "stateMutability": "payable",
@@ -441,32 +510,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_superior",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
       }
     ],
-    "name": "mintDogWithSuperior",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "mintMouse",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_superior",
-        "type": "address"
-      }
-    ],
-    "name": "mintMouseWithSuperior",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
@@ -611,56 +660,12 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "_baseExtension",
-        "type": "string"
-      }
-    ],
-    "name": "setBaseExtension",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_ERC20",
-        "type": "address"
-      }
-    ],
-    "name": "setERC20",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_hierarchy",
-        "type": "address"
-      }
-    ],
-    "name": "setHierarchy",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "uint256",
-        "name": "_index",
+        "name": "_price",
         "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "_baseURI",
-        "type": "string"
       }
     ],
-    "name": "setIndexBaseURI",
+    "name": "setPrice",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -730,25 +735,6 @@
       }
     ],
     "name": "tokenOfOwnerByIndex",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "tokenStatic",
     "outputs": [
       {
         "internalType": "uint256",

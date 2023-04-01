@@ -1,6 +1,6 @@
 {
-  "CONTRACT_ADDRESS": "0x9e5f0f8055a372B3087FBED5Dfe57c2177d52d9C",
-  "SCAN_LINK": "https://goerli.etherscan.io/token/0x9e5f0f8055a372B3087FBED5Dfe57c2177d52d9C",
+  "CONTRACT_ADDRESS": "0x0C0d428d2018613d05BC3827f62ac4aa5932dA2F",
+  "SCAN_LINK": "https://goerli.etherscan.io/token/0x0C0d428d2018613d05BC3827f62ac4aa5932dA2F",
   "NETWORK": {
     "NAME": "Goerli",
     "SYMBOL": "GoerliETH",
@@ -13,6 +13,6 @@
   "DISPLAY_COST": 0.0001,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/animal-8",
+  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/animal-13",
   "SHOW_BACKGROUND": true
 }
