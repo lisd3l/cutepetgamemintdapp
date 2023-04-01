@@ -1,8 +1,9 @@
 :root {
-  --primary: #ebc908;
-  --primary-text: #1a1a1a;
-  --secondary: #ff1dec;
+  --primary: #140C1F;
+  --primary-bg: linear-gradient(to bottom, rgb(20, 12, 31, .2), rgb(20, 12, 31, .8));
+  --primary-text: rgba(255, 255, 255, .7);
+  --secondary: rgba(198, 31, 203);
   --secondary-text: #ffffff;
-  --accent: #505050;
+  --accent: #140C1F;
   --accent-text: #ffffff;
 }
